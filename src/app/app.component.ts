@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from './services/employee.service';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +7,7 @@ import { EmployeeService } from './services/employee.service';
 })
 export class AppComponent implements OnInit {
   title = 'angular7';
-  constructor(private readonly employeeService: EmployeeService) {
+  constructor() { }
 
-  }
-
-  ngOnInit() {
-    this.employeeService.fetchEmployees().subscribe(data => {
-      console.log('employee Data from DB ', data);
-    });
-  }
+  ngOnInit() { }
 }

@@ -1,0 +1,40 @@
+<div><button class="showButton" *ngIf="!editMode" (click)="register()">Registration Form</button></div>
+
+<form [formGroup]="registrationForm" *ngIf="showRegistration">
+  <h2 *ngIf="editMode">Edit Employee Details :</h2>
+  <div class="main-form">
+    <div class="form-group"><label>First Name</label> <input class="input-control" formControlName="firstName" /></div>
+
+    <div class="form-group"><label>Last Name</label> <input class="input-control" formControlName="lastName" /></div>
+
+    <div class="form-group"><label>Email Address</label> <input class="input-control" formControlName="email" /></div>
+
+    <div class="form-group">
+      <button class="cancelClass" type="submit" (click)="cancelRegistration()">Cancel</button>
+      <button class="buttonClass" type="submit" (click)="submitRegistration()">Submit</button>
+    </div>
+  </div>
+</form>
+<br /><br />
+<h2>Employee Details :</h2>
+<table width="300" border="1" cellpadding="5" style="text-align: center">
+  <tr>
+    <th width="75"><strong>First Name</strong></th>
+    <th><span style="font-weight: bold;">Last Name</span></th>
+    <th><span style="font-weight: bold;">Email</span></th>
+    <th><span style="font-weight: bold;"></span></th>
+    <th><span style="font-weight: bold;"></span></th>
+  </tr>
+
+  <tr *ngFor="let item of contacts; index as i">
+    <td>{{ item.first_name }}</td>
+    <td>{{ item.last_name }}</td>
+    <td>{{ item.email }}</td>
+    <td><button (click)="editEmployee(item)">EDIT</button></td>
+    <td><button (click)="deleteEmployee(item)">Delete</button></td>
+  </tr>
+
+  <tr *ngIf="contacts.length == 0">
+    No Records Found
+  </tr>
+</table>

@@ -5,10 +5,18 @@ import { AppLocalConfig } from '../config/app.local.config';
   providedIn: 'root'
 })
 export class EmployeeService {
-  constructor(private readonly http: HttpClient, private readonly appConfig: AppLocalConfig) {}
+  constructor(private readonly http: HttpClient, private readonly appConfig: AppLocalConfig) { }
   backendURL = this.appConfig.getConfig()['node-backend'];
 
   fetchEmployees() {
-    return this.http.get(`${this.backendURL.employeesURL}`);
+    return this.http.get(`${this.backendURL.employeeURL}`);
+  }
+
+  saveEmployee(employeeObject) {
+    return this.http.post(`${this.backendURL.saveEmployee}`, employeeObject);
+  }
+
+  deleteEmployee(id) {
+    return this.http.delete(`${this.backendURL.deleteEmployee}/${id}`);
   }
 }

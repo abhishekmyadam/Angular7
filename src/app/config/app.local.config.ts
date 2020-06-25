@@ -3,7 +3,9 @@ export class AppLocalConfig {
     getConfig() {
         return {
             'node-backend': {
-                'employeesURL': '/api/'
+                employeeURL: '/api/',
+                saveEmployee: '/api/employee',
+                deleteEmployee: '/api/employee/remove'
             }
         };
     }
